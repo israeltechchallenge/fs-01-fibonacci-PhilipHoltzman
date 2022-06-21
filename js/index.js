@@ -4,12 +4,10 @@ const result = document.getElementById("result");
 const submitButton = (document.getElementById("submitButton").onclick =
   calculateSeq);
 
-
-
-let fIndex = userInput.value;
-
 function calculateSeq() {
   console.log("..calculating sequence.. ");
+
+  let fIndex = userInput.value;
 
   // a + b are the numbers added, c is the index
   let a = 0,
