@@ -1,31 +1,27 @@
 const userInput = document.getElementById("givenInput");
 const result = document.getElementById("result");
-const hardcoded = document.getElementById("hardcoded");
 
 const submitButton = (document.getElementById("submitButton").onclick =
-  mainSeq);
+  calculateSeq);
 
-let solution = 55;
 
-let x = userInput;
-let y = result;
 
-// hardcoded milestone one variables
-let hardcodeXindex = 5;
-let hardcodeYnumber = 5;
-
-function mainSeq() {
-  calculateSeq();
-  printFibSequence();
-}
+let fIndex = userInput.value;
 
 function calculateSeq() {
-  console.log("calculating sequence.. ");
-}
+  console.log("..calculating sequence.. ");
 
-function printFibSequence() {
-  hardcoded.innerHTML = hardcodeXindex;
-  result.innerHTML = hardcodeYnumber;
+  // a + b are the numbers added, c is the index
+  let a = 0,
+    b = 1,
+    c = fIndex;
 
-  console.log("printing sequence..");
+  for (let i = 2; i <= fIndex; i++) {
+    c = a + b;
+    a = b;
+    b = c;
+  }
+
+  console.log(c);
+  result.innerHTML = c;
 }
