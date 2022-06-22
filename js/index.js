@@ -4,7 +4,7 @@ const result = document.getElementById("result");
 const submitButton = (document.getElementById("submitButton").onclick =
   calculateSeq);
 
-function calculateSeq() {
+    function calculateSeq() {
   console.log("..calculating sequence.. ");
 
   let fIndex = userInput.value;
