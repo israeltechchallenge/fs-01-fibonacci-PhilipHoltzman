@@ -10,17 +10,17 @@ const result = document.getElementById("res");
 
 let error42;
 
-bottomAlert.style.color ='#A94442';
-bottomAlert.style.background ='#F2DEDE';
-bottomAlert.style.border = '#EBCCCC';
-bottomAlert.style.borderWidth = '5';
+bottomAlert.style.color = "#A94442";
+bottomAlert.style.background = "#F2DEDE";
+bottomAlert.style.border = "#EBCCCC";
+bottomAlert.style.borderWidth = "5";
 
 inputBox.addEventListener("click", removeAlert);
 
-function removeAlert(){
-  bottomAlert.classList.add('d-none');
-  inputBox.style.color = '#373A3C';
-  inputBox.style.borderColor = "#373A3C"
+function removeAlert() {
+  bottomAlert.classList.add("d-none");
+  inputBox.style.color = "#373A3C";
+  inputBox.style.borderColor = "#373A3C";
 }
 
 fibForm.addEventListener("submit", function (e) {
@@ -34,7 +34,6 @@ fibForm.addEventListener("submit", function (e) {
 // let num = USER_INPUT.value;
 
 function fib() {
-
   // Server variables
   document.getElementById("res").innerHTML = "";
   number = document.getElementById("givenInput").value;
@@ -46,36 +45,33 @@ function fib() {
 
   if (number > 50) {
     console.log("ERROR TOO BIG");
-    bottomAlert.classList.remove('d-none');
-    inputBox.style.color = '#D9534F';
-    inputBox.style.borderColor = "#D9534F"
+    bottomAlert.classList.remove("d-none");
+    inputBox.style.color = "#D9534F";
+    inputBox.style.borderColor = "#D9534F";
 
-
-  // } else if (number == 42) {
-  //   console.log("ERROR 42 MEANING OF LIFE");
-    
+    // } else if (number == 42) {
+    //   console.log("ERROR 42 MEANING OF LIFE");
   } else if (number <= 0) {
     console.log("TOO SMALL");
   } else {
-    spinner.classList.remove('d-none'); // show spinner
+    spinner.classList.remove("d-none"); // show spinner
     fetch(server).then((response) => {
-      if (!response.ok){
-        console.log('BROKEN');
+      if (!response.ok) {
+        console.log("BROKEN");
         response.text().then((error42) => {
           console.log(error42);
           result.innerHTML = "Server Error: " + error42;
-          result.style.color = '#D9534F'
+          result.style.color = "#D9534F";
           //result.classList.remove('fs-4');
-          result.classList.remove('fw-bold');
-
-        })
+          result.classList.remove("fw-bold");
+        });
       }
       response.json().then((data) => {
         result.innerHTML = data.result;
-        
+        result.style.color = "#373A3C";
       });
       console.log(response);
-      spinner.classList.add('d-none'); // remove spinner
+      spinner.classList.add("d-none"); // remove spinner
     });
   }
 }
@@ -95,7 +91,7 @@ function fib() {
 // OLD FUNCTION (LOCAL)
 // function calculateSeqLocal() {
 
-//   console.log("..calculating sequence.. ");  
+//   console.log("..calculating sequence.. ");
 
 //   let fIndex = USER_INPUT.value;
 

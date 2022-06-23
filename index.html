@@ -17,33 +17,44 @@
   </head>
   <body>
     <h1 class="display-1 m-5">Fibonacci Calculator</h1>
-    <form class="d-flex flex-row m-5 align-items-center" id="fibForm">
-      <div class="fs-4 p-2 align-self-center">The Fibonacci of</div>
-      <div class="p-2 align-self-center">
-        <input type="number" id="givenInput" class="form-control rounded-end" size="1" placeholder="#" />
-      </div>
+    <form class="d-flex flex-row m-5 align-items-start" id="fibForm">
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-row">
+          <div class="fs-4 p-2">The Fibonacci of</div>
+          <div class="p-2 ">
+            <input type="number" id="givenInput" class="form-control rounded-end" size="1" placeholder="#" />
+          </div>
+        </div>
+        
+        <div class="d-flex align-self-end p-2">
+          <div class="alert alert-danger d-none " role="alert" id="bottom-alert">
+            Can't be larger than 50
+          </div>
+        </div>
+        
+        </div>
+        
+        <!-- 50+ / ALERT BOX-->
+        </div>
+
       <!-- SUBMIT SECTION-->
-      <div class="p-2 align-self-center">
+      <div class="p-2">
         <button type="submit" id="submitButton" class="btn btn-primary">Is</button>
       </div>
       <!-- RESULT SECTION-->
       <div class="fs-4 p-2 align-self-center fw-bold text-decoration-underline" id="res">
         
       </div>
+      
       <div class="spinner-border ms-3 mt-3 d-none" role="status" id="spinner" >
-        <span class="visually-hidden">Loading...</span>
+        
     </div>
 
 
     <div class="col-md-3">
       
-      <!-- ERROR BOX-->
-      <div class="alert alert-danger d-none" role="alert" id="bottom-alert">
-       Can't be larger than 50
-      </div>
+      
 
-      </div>
-  
       <!-- <span>The Fibonnaci of </span><input type="number"> <button>Is</button><span>Y</span> -->
     <!--
     <div class="d-flex d-row align-items-center mt-3">
