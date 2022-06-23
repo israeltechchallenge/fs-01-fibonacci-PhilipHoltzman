@@ -1,4 +1,9 @@
 /* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-  }
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control.is-invalid{
+  background-image: none;
+}

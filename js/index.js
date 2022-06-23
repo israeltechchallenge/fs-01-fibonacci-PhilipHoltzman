@@ -2,25 +2,83 @@
 // const RESULT = document.getElementById("result"); // result display
 // const FIB_URL = "http://localhost:5050/fibonacci/{$number}"; // local server
 
-const fibForm = document.getElementById('fibForm');
+const fibForm = document.getElementById("fibForm");
+const spinner = document.getElementById("spinner");
+const bottomAlert = document.getElementById("bottom-alert");
+const inputBox = document.getElementById("givenInput");
+const result = document.getElementById("res");
 
-fibForm.addEventListener('submit', function(e){
+let error42;
+
+bottomAlert.style.color ='#A94442';
+bottomAlert.style.background ='#F2DEDE';
+bottomAlert.style.border = '#EBCCCC';
+bottomAlert.style.borderWidth = '5';
+
+inputBox.addEventListener("click", removeAlert);
+
+function removeAlert(){
+  bottomAlert.classList.add('d-none');
+  inputBox.style.color = '#373A3C';
+  inputBox.style.borderColor = "#373A3C"
+}
+
+fibForm.addEventListener("submit", function (e) {
   e.preventDefault();
   fib();
-})
+  //fib();
+});
+
+//submitBtn.addEventListener()
 
 // let num = USER_INPUT.value;
 
+function fib() {
 
-
-function fib()  {
-  document.getElementById("res").innerHTML = ''
+  // Server variables
+  document.getElementById("res").innerHTML = "";
   number = document.getElementById("givenInput").value;
   server = `http://localhost:5050/fibonacci/${number}`;
-  fetch(server).then((response) => {
-    response.json().then( data => { document.getElementById("res").innerHTML = data.result});
-  console.log(response)});
+
+  // Load state variables
+
+  let isLoading = false;
+
+  if (number > 50) {
+    console.log("ERROR TOO BIG");
+    bottomAlert.classList.remove('d-none');
+    inputBox.style.color = '#D9534F';
+    inputBox.style.borderColor = "#D9534F"
+
+
+  // } else if (number == 42) {
+  //   console.log("ERROR 42 MEANING OF LIFE");
+    
+  } else if (number <= 0) {
+    console.log("TOO SMALL");
+  } else {
+    spinner.classList.remove('d-none'); // show spinner
+    fetch(server).then((response) => {
+      if (!response.ok){
+        console.log('BROKEN');
+        response.text().then((error42) => {
+          console.log(error42);
+          result.innerHTML = "Server Error: " + error42;
+          result.style.color = '#D9534F'
+          //result.classList.remove('fs-4');
+          result.classList.remove('fw-bold');
+
+        })
+      }
+      response.json().then((data) => {
+        result.innerHTML = data.result;
+        
+      });
+      console.log(response);
+      spinner.classList.add('d-none'); // remove spinner
+    });
   }
+}
 
 // function calculateSeqServer() {
 //   //let fIndex = USER_INPUT.value;
@@ -34,14 +92,10 @@ function fib()  {
 //   })
 // }
 
-
-
-
-
 // OLD FUNCTION (LOCAL)
 // function calculateSeqLocal() {
-  
-//   console.log("..calculating sequence.. ");
+
+//   console.log("..calculating sequence.. ");  
 
 //   let fIndex = USER_INPUT.value;
 
