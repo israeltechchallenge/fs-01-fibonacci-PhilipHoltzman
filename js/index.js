@@ -1,12 +1,11 @@
-// const USER_INPUT = document.getElementById("givenInput"); // input
-// const RESULT = document.getElementById("result"); // result display
-// const FIB_URL = "http://localhost:5050/fibonacci/{$number}"; // local server
-
 const fibForm = document.getElementById("fibForm");
 const spinner = document.getElementById("spinner");
 const bottomAlert = document.getElementById("bottom-alert");
 const inputBox = document.getElementById("givenInput");
 const result = document.getElementById("res");
+const dataResult = document.getElementById("dataResult");
+
+const RESPONSE_URL = "http://localhost:5050/getFibonacciResults";
 
 let error42;
 
@@ -26,25 +25,25 @@ function removeAlert() {
 fibForm.addEventListener("submit", function (e) {
   e.preventDefault();
   fib();
-  //fib();
 });
 
 //submitBtn.addEventListener()
 
 // let num = USER_INPUT.value;
 
+// to post and grab data from user input
 function fib() {
   // Server variables
   document.getElementById("res").innerHTML = "";
-  number = document.getElementById("givenInput").value;
-  server = `http://localhost:5050/fibonacci/${number}`;
+  let number = document.getElementById("givenInput").value;
+  let server = `http://localhost:5050/fibonacci/${number}`;
 
   // Load state variables
 
   let isLoading = false;
 
   if (number > 50) {
-    console.log("ERROR TOO BIG");
+    //console.log("ERROR TOO BIG");
     bottomAlert.classList.remove("d-none");
     inputBox.style.color = "#D9534F";
     inputBox.style.borderColor = "#D9534F";
@@ -57,36 +56,52 @@ function fib() {
     spinner.classList.remove("d-none"); // show spinner
     fetch(server).then((response) => {
       if (!response.ok) {
-        console.log("BROKEN");
+        //console.log("BROKEN");
         response.text().then((error42) => {
-          console.log(error42);
+          //console.log(error42);
           result.innerHTML = "Server Error: " + error42;
           result.style.color = "#D9534F";
           //result.classList.remove('fs-4');
           result.classList.remove("fw-bold");
+          grabFibResults();
         });
       }
       response.json().then((data) => {
         result.innerHTML = data.result;
         result.style.color = "#373A3C";
+        grabFibResults();
       });
-      console.log(response);
+      //console.log(response);
       spinner.classList.add("d-none"); // remove spinner
     });
   }
 }
 
-// function calculateSeqServer() {
-//   //let fIndex = USER_INPUT.value;
+function grabFibResults() {
+  console.log("Grabbing prev result history from server");
 
-//   let server = `http://localhost:5050/fibonacci/11`
-//   fetch(server)
-//   .then((response) => {
-//     response.json().then(data => {
-//       document.getElementById("res") = data.res
-//     });
-//   })
-// }
+  fetch(RESPONSE_URL)
+    .then((response) => response.json())
+    .then((data)=> {
+      console.log(data);
+      
+      
+      for(let i of data.results){
+        dataResult.innerHTML += 
+        ` 
+        The Fibonnaci Of <b>${i.number}</b> is <b>${
+          i.result
+        }</b>. Calculated at: ${new Date(i.createdDate)}</div>`;
+      }
+      
+      
+    })
+
+  // console.log(response);
+
+  // console.log("results posted");
+}
+grabFibResults();
 
 // OLD FUNCTION (LOCAL)
 // function calculateSeqLocal() {
