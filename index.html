@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+
+    <title>Fibonocci Sequencer</title>
+    <link rel="stylesheet" href="css/style.css" />
+   
+  </head>
+  <body>
+    <h1 class="display-1 m-5">Fibonacci Calculator</h1>
+    
+    <form class="d-flex flex-row m-5 align-items-start" id="fibForm">
+      <div class="d-flex flex-column">
+        <div class="d-flex flex-row">
+          <div class="fs-4 p-2">The Fibonacci of</div>
+          <div class="p-2 ">
+            <input type="number" id="givenInput" class="form-control rounded-end" size="1" placeholder="#" />
+          </div>
+        </div>
+        
+        <div class="d-flex align-self-end p-2">   
+          <div class="alert alert-danger d-none p-1" role="alert" id="bottom-alert">
+            Can't be larger than 50
+          </div>
+        </div>
+        
+        </div>
+        
+
+        </div>
+
+
+      <div class="p-2">
+        <button type="submit" id="submitButton" class="btn btn-primary">Is</button>
+      </div>
+      <div class="fs-4 p-2 align-self-center fw-bold text-decoration-underline" id="res">
+        
+      </div>
+      
+      <div class="spinner-border ms-3 mt-3 d-none" role="status" id="spinner" >
+        
+    </div>
+
+  
+    <div class="col-md-3">
+      
+      
+
+      
+    
+    <div class="d-flex d-row align-items-center mt-3">
+      <h2 class="display-3 ms-5">Results</h2>
+      
+      </div>
+      <div id="dataResult" class="fs-4 border-bottom border-secondary pb-3 mb-3 letter-spacing"></div>
+    </div>
+    
+      
+    </div>
+
+  
+
+
+    <!-- NEED CUSTOM FONT AND DROP DOWN COLOR-->
+
+    
+    <!-- JS Section dont touch-->
+    <script src="js/index.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
